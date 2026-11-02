@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>血色等式：高級惡靈除靈術 - 官方介紹頁面</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyanGlow: '#06b6d4',
+                        cyanDark: '#083344',
+                        cyanDeep: '#041f2a',
+                        gothicGold: '#c5a059',
+                        bloodRed: '#700000'
+                    },
+                    fontFamily: {
+                        serif: ['Noto Serif TC', 'serif'],
+                        cinzel: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #02090e;
+            color: #ecfeff;
+            font-family: 'Noto Serif TC', serif;
+            overflow-x: hidden;
+        }
+
+        .cinzel-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        .cyan-glass-card {
+            background: rgba(4, 31, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.8), 0 0 20px rgba(6, 182, 212, 0.15);
+        }
+
+        .cyan-glow-text {
+            text-shadow: 0 0 12px rgba(6, 182, 212, 0.8), 0 0 25px rgba(8, 145, 178, 0.6);
+        }
+
+        .blood-glow-text {
+            text-shadow: 0 0 12px rgba(220, 38, 38, 0.8);
+        }
+
+        /* Continuous gentle floating element animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #02090e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #08596c;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative selection:bg-cyan-500 selection:text-black">
+
+    <!-- Audio Player with terrifying gothic & horror atmospheric sources -->
+    <audio id="bgmAudio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/10/14/audio_9934336fb4.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-creepy-dark-gothic-atmosphere-1048.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-cyan-950/90 border-b border-cyan-800/50 backdrop-blur-md px-6 py-3.5 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-full border border-cyan-400/80 bg-cyan-900/60 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+                <i class="fa-solid fa-ankh text-cyan-300 text-lg"></i>
+            </div>
+            <span class="text-xl font-black cinzel-font text-cyan-100 cyan-glow-text tracking-widest">
+                CRIMSON EQUATION
+            </span>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-8 text-xs font-bold text-cyan-200">
+            <a href="#about" class="hover:text-cyan-400 transition">開發歷程</a>
+            <a href="#features" class="hover:text-cyan-400 transition">遊戲特色</a>
+            <a href="#demo" class="hover:text-cyan-400 transition">線上試玩</a>
+            <a href="#music" class="hover:text-cyan-400 transition">主題曲試聽</a>
+        </div>
+
+        <button onclick="toggleBGM()" class="bg-cyan-900/80 hover:bg-cyan-800 border border-cyan-500/60 px-4 py-1.5 rounded-full text-xs text-cyan-200 font-bold flex items-center space-x-2 transition shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+            <i class="fa-solid fa-music text-cyan-400" id="bgmIcon"></i>
+            <span id="bgmText">播放背景配樂</span>
+        </button>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <header id="about" class="relative py-16 px-6 text-center max-w-5xl mx-auto flex flex-col items-center space-y-6">
+        <div class="inline-flex items-center space-x-2 bg-cyan-950/80 border border-cyan-500/50 px-4 py-1.5 rounded-full text-xs text-cyan-300 shadow">
+            <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i>
+            <span>青色魔陣・數學惡靈除靈術 Premium</span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-black cinzel-font text-cyan-50 cyan-glow-text leading-tight">
+            血色等式：惡靈除靈術
+        </h1>
+
+        <!-- Main Banner Screenshot -->
+        <div class="w-full max-w-3xl rounded-2xl overflow-hidden border-2 border-cyan-500/50 shadow-[0_0_50px_rgba(6,182,212,0.3)] relative my-4 animate-float">
+            <img src="image_421bdb.png" alt="遊戲主視覺" class="w-full h-auto object-cover filter brightness-95 contrast-110">
+        </div>
+
+        <p class="text-sm md:text-base text-cyan-200/90 leading-relaxed max-w-2xl font-serif">
+            融合了<b>微積分極限、高階三角函數與代數運算</b>的深層解謎體驗。面對來自哥德深淵的惡靈，唯有展現卓越的數學演算與快速反應，才能在無盡的理智吞噬中存活下來。
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+            <a href="#demo" class="px-7 py-3 bg-gradient-to-r from-cyan-600 to-cyan-800 hover:brightness-125 border border-cyan-300 text-white font-bold rounded-xl text-xs transition shadow-lg">
+                <i class="fa-solid fa-gamepad mr-2"></i> 立即體驗試玩
+            </a>
+            <button onclick="toggleBGM()" class="px-7 py-3 bg-cyan-950 hover:bg-cyan-900 border border-cyan-600/60 text-cyan-200 font-bold rounded-xl text-xs transition shadow">
+                <i class="fa-solid fa-headphones mr-2"></i> <span id="heroAudioText">播放沉浸哥德配樂</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Embedded Online Play Demo Section -->
+    <section id="demo" class="py-12 px-4 max-w-4xl mx-auto w-full">
+        <div class="cyan-glass-card rounded-2xl p-6 md:p-8 relative">
+            <div class="flex flex-wrap justify-between items-center mb-6 border-b border-cyan-800/60 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-100 cinzel-font cyan-glow-text flex items-center space-x-3">
+                        <i class="fa-solid fa-laptop-code text-cyan-400"></i>
+                        <span>線上試玩平台 (Demo Mode)</span>
+                    </h2>
+                    <p class="text-xs text-cyan-300/80 mt-1">直接在介紹網頁中嘗試解答惡靈留下的數學詛咒！</p>
+                </div>
+                <div class="flex items-center space-x-3 mt-2 sm:mt-0">
+                    <button onclick="toggleEmbedAIMode()" class="text-xs bg-cyan-900 hover:bg-cyan-800 border border-cyan-500/50 px-3 py-1.5 rounded-lg text-cyan-200 font-bold transition">
+                        <i class="fa-solid fa-robot mr-1"></i> <span id="embedAiBtnText">單人模式</span>
+                    </button>
+                    <div class="bg-cyan-950 px-3 py-1.5 rounded-lg border border-cyan-800 text-xs font-mono font-bold text-amber-300">
+                        積分: <span id="embedScore">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Embed Core Area -->
+            <div class="bg-cyan-950/90 border border-cyan-800 rounded-xl p-5 shadow-inner">
+                <!-- Status Bar -->
+                <div class="flex justify-between items-center mb-4 text-xs font-mono">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-cyan-400 font-bold">理智值 (SAN):</span>
+                        <div class="w-32 md:w-48 bg-slate-900 border border-cyan-800 rounded-full h-3 overflow-hidden">
+                            <div id="embedSanBar" class="bg-gradient-to-r from-red-600 via-amber-500 to-cyan-400 h-full w-full transition-all duration-300"></div>
+                        </div>
+                        <span id="embedSanText" class="text-cyan-200">100/100</span>
+                    </div>
+                    <div class="text-red-400 font-bold flex items-center space-x-1">
+                        <i class="fa-regular fa-clock"></i>
+                        <span id="embedTimer">20s</span>
+                    </div>
+                </div>
+
+                <!-- Spell Prompt -->
+                <div class="text-center my-6">
+                    <div id="embedSpellTitle" class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">
+                        <i class="fa-solid fa-scroll mr-1"></i> 代數封印
+                    </div>
+                    <p id="embedPrompt" class="text-lg md:text-2xl font-bold text-white font-mono bg-cyan-900/40 p-4 rounded-xl border border-cyan-700/50 shadow">
+                        載入試煉題目中...
+                    </p>
+                </div>
+
+                <!-- Answer Options -->
+                <div id="embedOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+                    <!-- Option Buttons Injected via JS -->
+                </div>
+
+                <!-- Revive Box (Triggers on 0 SAN) -->
+                <div id="embedReviveBox" class="hidden text-center p-6 bg-red-950/80 border border-red-600/80 rounded-xl my-4 space-y-4">
+                    <i class="fa-solid fa-skull text-4xl text-red-500 animate-bounce"></i>
+                    <h3 class="text-lg font-bold text-red-200">你的理智已經歸零！</h3>
+                    <p class="text-xs text-red-300">是否付出代價與惡靈簽署血契重新站起？</p>
+                    <div class="flex justify-center space-x-4 pt-2">
+                        <button onclick="handleEmbedRevive('sacrifice')" class="px-4 py-2 bg-gradient-to-r from-red-800 to-amber-700 text-white font-bold text-xs rounded-lg border border-amber-400 shadow">
+                            獻祭 50% 積分復活 (回復 50 SAN)
+                        </button>
+                        <button onclick="handleEmbedRevive('restart')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-gray-300 font-bold text-xs rounded-lg border border-slate-700">
+                            完全重生 (重置)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feedback Step Explanation -->
+                <div id="embedFeedback" class="hidden p-3 rounded-lg text-xs leading-relaxed transition font-serif"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="py-12 px-4 max-w-4xl mx-auto w-full">
+        <div class="cyan-glass-card rounded-2xl p-6 text-center space-y-4">
+            <i class="fa-solid fa-compact-disc text-4xl text-cyan-400 animate-spin" style="animation-duration: 10s;"></i>
+            <h2 class="text-2xl font-bold text-cyan-100 cinzel-font">Suno AI 原創主題配樂</h2>
+            <p class="text-xs text-cyan-200/80 max-w-lg mx-auto leading-relaxed">
+                結合哥德式管風琴、狂暴交響樂與刺耳小提琴，打造極致沉浸的暗黑冒險氛圍。
+            </p>
+            <button onclick="toggleBGM()" class="px-6 py-2.5 bg-cyan-900 hover:bg-cyan-800 border border-cyan-400/80 text-cyan-100 font-bold rounded-xl text-xs transition shadow-lg inline-flex items-center space-x-2">
+                <i class="fa-solid fa-play text-amber-400" id="themePlayIcon"></i>
+                <span id="themePlayText">播放主題曲試聽</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-cyan-900/60 bg-cyan-950/95 py-6 text-center text-xs text-cyan-400/70">
+        血色等式：高級惡靈除靈術 &copy; 2026 | 一頁式官方展示與試玩平台
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        let isPlaying = false;
+        let audioContext = null;
+        let synthOsc = null;
+        let synthOsc2 = null;
+        let synthGain = null;
+
+        function getAudio() {
+            return document.getElementById('bgmAudio');
+        }
+
+        // Unlock Browser Autoplay Restrictions smoothly
+        function unlockAudio() {
+            const bgmAudio = getAudio();
+            if (bgmAudio) {
+                bgmAudio.load();
+            }
+            if (!audioContext) {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) {
+                    audioContext = new AudioCtx();
+                }
+            } else if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+        }
+        document.addEventListener('click', unlockAudio, { once: false });
+        document.addEventListener('keydown', unlockAudio, { once: false });
+
+        // Synthesize Terrifying Gothic Ambient Sound with Dissonant Oscillators
+        function startSynthGothicAmbience() {
+            if (!audioContext) {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) audioContext = new AudioCtx();
+            }
+            if (audioContext && audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            if (synthOsc || !audioContext) return;
+
+            // Base Horror Sub-bass Drone (D1)
+            synthOsc = audioContext.createOscillator();
+            // Dissonant Screech (Tritone Interval for Horrific Tension)
+            synthOsc2 = audioContext.createOscillator();
+            synthGain = audioContext.createGain();
+            
+            synthOsc.type = 'sawtooth';
+            synthOsc.frequency.setValueAtTime(36.71, audioContext.currentTime); // D1 Sub-bass
+            
+            synthOsc2.type = 'triangle';
+            synthOsc2.frequency.setValueAtTime(51.91, audioContext.currentTime); // G#1 Tritone (Horror Dissonance)
+
+            // Dynamic Slow Tremolo Filter for unsettling breath/pulse
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(180, audioContext.currentTime);
+
+            const lfo = audioContext.createOscillator();
+            const lfoGain = audioContext.createGain();
+            lfo.frequency.setValueAtTime(0.15, audioContext.currentTime); // Ultra slow pulse
+            lfoGain.gain.setValueAtTime(120, audioContext.currentTime);
+            lfo.connect(filter.frequency);
+            lfo.start();
+
+            synthGain.gain.setValueAtTime(0.01, audioContext.currentTime);
+            synthGain.gain.exponentialRampToValueAtTime(0.25, audioContext.currentTime + 3);
+
+            synthOsc.connect(filter);
+            synthOsc2.connect(filter);
+            filter.connect(synthGain);
+            synthGain.connect(audioContext.destination);
+
+            synthOsc.start();
+            synthOsc2.start();
+        }
+
+        function stopSynthGothicAmbience() {
+            if (synthGain && audioContext) {
+                synthGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
+                setTimeout(() => {
+                    if (synthOsc) {
+                        synthOsc.stop();
+                        synthOsc.disconnect();
+                        synthOsc = null;
+                    }
+                    if (synthOsc2) {
+                        synthOsc2.stop();
+                        synthOsc2.disconnect();
+                        synthOsc2 = null;
+                    }
+                }, 500);
+            }
+        }
+
+        function toggleBGM() {
+            unlockAudio();
+            const bgmAudio = getAudio();
+
+            if (!isPlaying) {
+                if (bgmAudio) {
+                    const playPromise = bgmAudio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            isPlaying = true;
+                            updateAudioUI(true);
+                        }).catch(err => {
+                            console.warn("MP3 play blocked or failed, using Web Audio Horror Synth Fallback:", err);
+                            startSynthGothicAmbience();
+                            isPlaying = true;
+                            updateAudioUI(true);
+                        });
+                    }
+                } else {
+                    startSynthGothicAmbience();
+                    isPlaying = true;
+                    updateAudioUI(true);
+                }
+            } else {
+                if (bgmAudio) bgmAudio.pause();
+                stopSynthGothicAmbience();
+                isPlaying = false;
+                updateAudioUI(false);
+            }
+        }
+
+        function updateAudioUI(playing) {
+            const bgmText = document.getElementById('bgmText');
+            const bgmIcon = document.getElementById('bgmIcon');
+            const heroAudioText = document.getElementById('heroAudioText');
+            const themePlayText = document.getElementById('themePlayText');
+            const themePlayIcon = document.getElementById('themePlayIcon');
+
+            if (playing) {
+                if (bgmText) bgmText.innerText = "暫停背景配樂";
+                if (bgmIcon) bgmIcon.className = "fa-solid fa-pause text-amber-400 animate-pulse";
+                if (heroAudioText) heroAudioText.innerText = "暫停哥德配樂";
+                if (themePlayText) themePlayText.innerText = "暫停主題曲試聽";
+                if (themePlayIcon) themePlayIcon.className = "fa-solid fa-pause text-amber-400";
+            } else {
+                if (bgmText) bgmText.innerText = "播放背景配樂";
+                if (bgmIcon) bgmIcon.className = "fa-solid fa-music text-cyan-400";
+                if (heroAudioText) heroAudioText.innerText = "播放沉浸哥德配樂";
+                if (themePlayText) themePlayText.innerText = "播放主題曲試聽";
+                if (themePlayIcon) themePlayIcon.className = "fa-solid fa-play text-amber-400";
+            }
+        }
+
+        // --- EMBEDDED DIRECT PLAY ENGINE ---
+        let embedGame = {
+            san: 100,
+            score: 0,
+            timer: 20,
+            timerInterval: null,
+            currentQ: null,
+            isAI: false
+        };
+
+        function generateEmbedQuestion() {
+            const types = ['algebra', 'trig', 'calculus'];
+            const type = types[Math.floor(Math.random() * types.length)];
+
+            if (type === 'algebra') {
+                const x = Math.floor(Math.random() * 10) + 2;
+                const a = Math.floor(Math.random() * 5) + 2;
+                const b = Math.floor(Math.random() * 15) + 3;
+                return {
+                    title: "一元二次代數封印",
+                    prompt: `求解方程：${a}x + ${b} = ${a * x + b}，則 x = ?`,
+                    correct: x,
+                    options: shuffleArray([x, x + 2, Math.max(1, x - 3), x + 5]),
+                    exp: `解法：${a}x = ${(a*x+b) - b}，故 x = ${x}。`
+                };
+            } else if (type === 'trig') {
+                return {
+                    title: "三角函數特徵陣",
+                    prompt: `計算：2 × sin(30°) + 4 = ?`,
+                    correct: 5,
+                    options: [3, 4, 5, 6],
+                    exp: `解法：sin(30°) = 0.5，2 × 0.5 + 4 = 5。`
+                };
+            } else {
+                return {
+                    title: "初階微積分・極限",
+                    prompt: `求微積分極限：lim (x → 3) (x² + 2) = ?`,
+                    correct: 11,
+                    options: [9, 10, 11, 12],
+                    exp: `解法：代入 x = 3，3² + 2 = 11。`
+                };
+            }
+        }
+
+        function shuffleArray(arr) {
+            return arr.sort(() => Math.random() - 0.5);
+        }
+
+        function renderEmbedUI() {
+            const sanBar = document.getElementById('embedSanBar');
+            const sanText = document.getElementById('embedSanText');
+            const scoreEl = document.getElementById('embedScore');
+            const spellTitle = document.getElementById('embedSpellTitle');
+            const promptEl = document.getElementById('embedPrompt');
+            const optsDiv = document.getElementById('embedOptions');
+
+            if (!sanBar || !sanText || !scoreEl || !spellTitle || !promptEl || !optsDiv) return;
+
+            sanBar.style.width = `${embedGame.san}%`;
+            sanText.innerText = `SAN ${embedGame.san}/100`;
+            scoreEl.innerText = embedGame.score;
+
+            const q = embedGame.currentQ;
+            if (q) {
+                spellTitle.innerHTML = `<i class="fa-solid fa-scroll mr-1 text-cyan-400"></i> ${q.title}`;
+                promptEl.innerText = q.prompt;
+
+                optsDiv.innerHTML = '';
+                q.options.forEach((opt, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = "p-3 bg-cyan-950/80 hover:bg-cyan-800/80 border border-cyan-700/60 hover:border-cyan-400 rounded-lg text-cyan-100 font-mono font-bold text-sm transition";
+                    btn.innerText = `${String.fromCharCode(65 + i)}.  ${opt}`;
+                    btn.onclick = () => handleEmbedAnswer(opt, btn);
+                    optsDiv.appendChild(btn);
+                });
+            }
+        }
+
+        function handleEmbedAnswer(opt, btn) {
+            clearInterval(embedGame.timerInterval);
+            const q = embedGame.currentQ;
+            const fb = document.getElementById('embedFeedback');
+            if (fb) fb.classList.remove('hidden');
+
+            if (opt === q.correct) {
+                embedGame.score += 150;
+                if (fb) {
+                    fb.className = "p-3 rounded-lg border border-emerald-500 bg-emerald-950/80 text-emerald-200 text-xs";
+                    fb.innerHTML = `<strong>✨ 淨化成功！ (+150分)</strong><br>${q.exp}`;
+                }
+            } else {
+                embedGame.san = Math.max(0, embedGame.san - 20);
+                if (fb) {
+                    fb.className = "p-3 rounded-lg border border-red-600 bg-red-950/80 text-red-200 text-xs";
+                    fb.innerHTML = `<strong>💀 反噬受傷！理智值 -20</strong><br>解答為 ${q.correct}。${q.exp}`;
+                }
+            }
+
+            renderEmbedUI();
+
+            setTimeout(() => {
+                if (fb) fb.classList.add('hidden');
+                if (embedGame.san > 0) {
+                    startEmbedNextQ();
+                } else {
+                    showEmbedReviveOptions();
+                }
+            }, 2000);
+        }
+
+        function showEmbedReviveOptions() {
+            const opts = document.getElementById('embedOptions');
+            const reviveBox = document.getElementById('embedReviveBox');
+            if (opts) opts.classList.add('hidden');
+            if (reviveBox) reviveBox.classList.remove('hidden');
+        }
+
+        function handleEmbedRevive(type) {
+            const opts = document.getElementById('embedOptions');
+            const reviveBox = document.getElementById('embedReviveBox');
+            if (reviveBox) reviveBox.classList.add('hidden');
+            if (opts) opts.classList.remove('hidden');
+
+            if (type === 'sacrifice') {
+                embedGame.score = Math.floor(embedGame.score * 0.5);
+                embedGame.san = 50;
+            } else {
+                embedGame.score = 0;
+                embedGame.san = 100;
+            }
+
+            renderEmbedUI();
+            startEmbedNextQ();
+        }
+
+        function toggleEmbedAIMode() {
+            embedGame.isAI = !embedGame.isAI;
+            const btnText = document.getElementById('embedAiBtnText');
+            if (btnText) {
+                btnText.innerText = embedGame.isAI ? "AI 對決模式" : "單人模式";
+            }
+        }
+
+        function startEmbedNextQ() {
+            embedGame.currentQ = generateEmbedQuestion();
+            renderEmbedUI();
+
+            if (embedGame.timerInterval) clearInterval(embedGame.timerInterval);
+            embedGame.timer = 20;
+            const timerEl = document.getElementById('embedTimer');
+            if (timerEl) timerEl.innerText = `${embedGame.timer}s`;
+            
+            embedGame.timerInterval = setInterval(() => {
+                embedGame.timer--;
+                const timerEl = document.getElementById('embedTimer');
+                if (timerEl) timerEl.innerText = `${embedGame.timer}s`;
+                if (embedGame.timer <= 0) {
+                    clearInterval(embedGame.timerInterval);
+                    embedGame.san = Math.max(0, embedGame.san - 20);
+                    renderEmbedUI();
+                    if (embedGame.san <= 0) {
+                        showEmbedReviveOptions();
+                    } else {
+                        startEmbedNextQ();
+                    }
+                }
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            startEmbedNextQ();
+        });
+    </script>
+</body>
+</html>
